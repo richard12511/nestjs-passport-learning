@@ -19,7 +19,6 @@ type Mutation {
 }
 
 input UserCreateDto {
-  id: String!
   email: String!
   password: String!
 }
