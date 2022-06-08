@@ -1,5 +1,5 @@
-import { Field, ObjectType } from '@nestjs/graphql';
-import { Account } from 'src/account/entities/account.entity';
+import { ObjectType, Field } from '@nestjs/graphql';
+import { User } from 'src/user/entities/user.entity';
 import {
   Entity,
   PrimaryGeneratedColumn,
@@ -7,23 +7,27 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   BaseEntity,
-  OneToMany,
+  ManyToOne,
 } from 'typeorm';
 
 @Entity()
 @ObjectType()
-export class User extends BaseEntity {
+export class Account extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   @Field(() => String)
   id: string;
 
   @Column()
   @Field(() => String)
-  email: string;
+  plaidId: string;
 
   @Column()
   @Field(() => String)
   password: string;
+
+  @Column()
+  @Field(() => String)
+  type: string;
 
   @CreateDateColumn()
   @Field(() => String)
@@ -33,7 +37,11 @@ export class User extends BaseEntity {
   @Field(() => String)
   updated: Date;
 
-  @OneToMany(() => Account, (account) => account.user)
-  @Field(() => [Account], { nullable: true })
-  accounts: [Account];
+  @ManyToOne(() => User, (user) => user.accounts)
+  @Field(() => User)
+  user: User;
+
+  @Column()
+  @Field()
+  userId: string;
 }

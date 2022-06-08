@@ -4,6 +4,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { join } from 'path';
 import { UserModule } from './user/user.module';
+import { AccountModule } from './account/account.module';
 require('dotenv').config();
 
 const username = process.env.USERNAME;
@@ -27,6 +28,7 @@ const database = process.env.DATABASE;
       entities: ['dist/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
+    AccountModule,
   ],
   controllers: [],
   providers: [],

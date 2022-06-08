@@ -2,23 +2,43 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Account {
+  id: String!
+  plaidId: String!
+  password: String!
+  type: String!
+  created: String!
+  updated: String!
+  user: User!
+  userId: String!
+}
+
 type User {
   id: String!
   email: String!
   password: String!
   created: String!
   updated: String!
+  accounts: [Account!]
 }
 
 type Query {
   getAllUsers: [User!]!
+  account: [Account!]!
 }
 
 type Mutation {
   createUser(user: UserCreateDto!): User!
+  createAccount(createAccountInput: CreateAccountInput!): Account!
 }
 
 input UserCreateDto {
   email: String!
   password: String!
+}
+
+input CreateAccountInput {
+  plaidId: String!
+  type: String!
+  userId: String!
 }
