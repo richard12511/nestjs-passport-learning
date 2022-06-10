@@ -23,10 +23,6 @@ export class Account extends BaseEntity {
 
   @Column()
   @Field(() => String)
-  password: string;
-
-  @Column()
-  @Field(() => String)
   type: string;
 
   @CreateDateColumn()
