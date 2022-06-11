@@ -5,7 +5,6 @@
 type Account {
   id: String!
   plaidId: String!
-  password: String!
   type: String!
   created: String!
   updated: String!
