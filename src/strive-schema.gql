@@ -21,6 +21,11 @@ type User {
   accounts: [Account!]
 }
 
+type LoginResponse {
+  access_token: String!
+  user: User!
+}
+
 type Query {
   getAllUsers: [User!]!
   getUser: User!
@@ -30,6 +35,7 @@ type Query {
 type Mutation {
   createUser(user: UserCreateDto!): User!
   createAccount(createAccountInput: CreateAccountInput!): Account!
+  login(loginInput: LoginInput!): LoginResponse!
 }
 
 input UserCreateDto {
@@ -41,4 +47,9 @@ input CreateAccountInput {
   plaidId: String!
   type: String!
   userId: String!
+}
+
+input LoginInput {
+  email: String!
+  password: String!
 }

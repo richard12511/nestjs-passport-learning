@@ -5,6 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { join } from 'path';
 import { UserModule } from './user/user.module';
 import { AccountModule } from './account/account.module';
+import { AuthModule } from './auth/auth.module';
 require('dotenv').config();
 
 const username = process.env.USERNAME;
@@ -29,6 +30,7 @@ const database = process.env.DATABASE;
       synchronize: true,
     }),
     AccountModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],
