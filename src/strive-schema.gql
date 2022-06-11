@@ -23,6 +23,7 @@ type User {
 
 type Query {
   getAllUsers: [User!]!
+  getUser: User!
   account: [Account!]!
 }
 

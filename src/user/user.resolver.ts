@@ -12,6 +12,11 @@ export class UserResolver {
     return this.userService.findAll();
   }
 
+  @Query(() => User, { name: 'getUser' })
+  findOne(email: string) {
+    return this.userService.findOne(email);
+  }
+
   @Mutation(() => User, { name: 'createUser' })
   create(@Args('user') user: UserCreateDto) {
     return this.userService.create(user);

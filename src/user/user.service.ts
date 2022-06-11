@@ -12,6 +12,10 @@ export class UserService {
     return this.userRepo.find({ relations: ['accounts'] });
   }
 
+  async findOne(email: string): Promise<User> {
+    return this.userRepo.findOneBy({ email });
+  }
+
   async create(userDto: UserCreateDto): Promise<User> {
     const user = this.userRepo.create(userDto);
     return this.userRepo.save(user);
